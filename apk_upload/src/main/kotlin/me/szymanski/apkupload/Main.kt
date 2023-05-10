@@ -13,6 +13,7 @@ import com.google.auth.http.HttpCredentialsAdapter
 import com.google.auth.oauth2.ServiceAccountCredentials
 import java.io.File
 import java.io.FileInputStream
+import java.util.*
 import kotlin.system.exitProcess
 
 object Main {
@@ -100,5 +101,12 @@ object Main {
         println("Staged rollout for track '" + updatedTrack.track + "' has been halted.");
 
         publisher.edits().commit(appId, edit.id).execute()
+
+        val properties = Properties()
+        properties.setProperty("version_name", release.name.split(" ")[1])
+        val file = File("../app.properties")
+        file.outputStream().use {
+            properties.store(it, "This is a comment")
+        }
     }
 }
