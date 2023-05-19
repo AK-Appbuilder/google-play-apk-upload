@@ -103,6 +103,7 @@ object Main {
         publisher.edits().commit(appId, edit.id).execute()
 
         val properties = Properties()
+        println("version :" +release.name)
         properties.setProperty("version_name", release.name.split(" ")[1])
         val file = File("../app.properties")
         file.outputStream().use {
