@@ -103,8 +103,17 @@ object Main {
         publisher.edits().commit(appId, edit.id).execute()
 
         val properties = Properties()
-        println("version :" +release.name)
-        properties.setProperty("version_name", release.name.split(" ")[1])
+
+        var releaseName = "(${release.name})"
+
+        val nameArray = release.name.split(" ")
+        if (nameArray.size == 2) {
+          releaseName = nameArray[1]
+        }
+
+        println("version :$releaseName")
+
+        properties.setProperty("version_name", releaseName)
         val file = File("../app.properties")
         file.outputStream().use {
             properties.store(it, "This is a comment")
