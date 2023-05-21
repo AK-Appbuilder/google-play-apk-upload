@@ -39,9 +39,9 @@ pipelines_map = {
 platform :android do
 
   desc "set artifact path"
-    private_lane :check_execution do
+    lane :check_execution do
         puts "Running test lane"
-  end
+    end
 
 
 end
