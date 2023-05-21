@@ -20,7 +20,7 @@ default_platform(:android)
 
 
 
-mobile_ci_alerts = "https://hooks.slack.com/services/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"
+mobile_ci_alerts = "https://hooks.slack.com/services/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"
 dev_build_slack_channel = ""
 dev_release_slack_channel = ""
 
@@ -69,6 +69,9 @@ before_all do |lane, options|
         specific_emoji = pipelines_map[pipeline_name]["emoji"]
         app_name       = pipelines_map[pipeline_name]["app_name"]
       end
+
+      puts "channel name printing"
+      puts mobile_ci_alerts
 
    slack(message: "#{specific_emoji} #{app_name} \n\n check_execution is initiated for the #{app_name} code.",
                   slack_url: mobile_ci_alerts,
