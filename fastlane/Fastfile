@@ -73,6 +73,10 @@ before_all do |lane, options|
       puts "channel name printing"
       puts mobile_ci_alerts
 
+      puts "Printing app name"
+      puts app_name
+      puts specific_emoji
+
    slack(message: "#{specific_emoji} #{app_name} \n\n check_execution is initiated for the #{app_name} code.",
                   slack_url: mobile_ci_alerts,
                   default_payloads: [:git_branch, :git_author]
