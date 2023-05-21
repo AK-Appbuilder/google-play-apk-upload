@@ -60,12 +60,11 @@ before_all do |lane, options|
          dev_build_slack_channel = mobile_ci_alerts
          dev_release_slack_channel = mobile_ci_alerts
          deployment_track = "alpha"
-
       end
 
       puts "Printing pipeline_name"
       puts pipeline_name
-      if pipeline_name != 'PIPELINE_NAME'
+      if app_name == 'APP_NAME'
         puts "inside renaming block"
         specific_emoji = pipelines_map[pipeline_name]["emoji"]
         app_name       = pipelines_map[pipeline_name]["app_name"]
