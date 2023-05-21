@@ -21,6 +21,8 @@ default_platform(:android)
 
 
 mobile_ci_alerts = "https://hooks.slack.com/services/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"
+dev_build_slack_channel = ""
+dev_release_slack_channel = ""
 
 specific_emoji = "SPECIFIC_EMOJI"
       #TODO app name
@@ -68,8 +70,7 @@ before_all do |lane, options|
         app_name       = pipelines_map[pipeline_name]["app_name"]
       end
 
-   lane_detail_text = lane_names_map[:"#{lane}"]
-   slack(message: "#{specific_emoji} #{app_name} \n\n #{lane_detail_text} is initiated for the #{app_name} code.",
+   slack(message: "#{specific_emoji} #{app_name} \n\n check_execution is initiated for the #{app_name} code.",
                   slack_url: mobile_ci_alerts,
                   default_payloads: [:git_branch, :git_author]
     )
@@ -77,8 +78,7 @@ end
 
 desc "Common setup for all lanes"
 after_all do |lane, options|
-  lane_detail_text = lane_names_map[:"#{lane}"]
-  slack(message: "#{specific_emoji} #{app_name} \n\n #{lane_detail_text} is successfully completed for the #{app_name} code.",
+  slack(message: "#{specific_emoji} #{app_name} \n\n check_execution is successfully completed for the #{app_name} code.",
                 slack_url: mobile_ci_alerts,
                 default_payloads: [:git_branch, :git_author]
   )
