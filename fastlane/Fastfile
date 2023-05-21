@@ -20,7 +20,7 @@ default_platform(:android)
 
 
 
-mobile_ci_alerts = "https://hooks.slack.com/services/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"
+mobile_ci_alerts = "https://hooks.slack.com/services/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"
 dev_build_slack_channel = ""
 dev_release_slack_channel = ""
 
