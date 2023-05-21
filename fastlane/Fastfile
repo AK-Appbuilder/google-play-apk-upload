@@ -66,6 +66,7 @@ before_all do |lane, options|
       puts "Printing pipeline_name"
       puts pipeline_name
       if pipeline_name != "PIPELINE_NAME"
+        puts "inside renaming block"
         specific_emoji = pipelines_map[pipeline_name]["emoji"]
         app_name       = pipelines_map[pipeline_name]["app_name"]
       end
