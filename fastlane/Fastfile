@@ -42,7 +42,10 @@ platform :android do
 
   desc "set artifact path"
     lane :check_execution do
-        puts "Running test lane"
+       s3_bucket_object_url = "s3://pipeline-artifacts-davo-101/tf-cicd/tf-code/}"
+       date = "2023-07-18 11:13:29"
+       sh("aws s3 ls --recursive '#{s3_bucket_object_url}' | awk '$1 < #{date} {print $4}' | xargs -n1 -t -I 'KEY' aws s3 rm '#{s3_bucket_object_url}'KEY")
+       puts "Running test lane"
     end
 
 
