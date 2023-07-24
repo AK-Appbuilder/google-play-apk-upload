@@ -44,8 +44,7 @@ platform :android do
     lane :check_execution do
        s3_bucket_object_url = "s3://pipeline-artifacts-davo-101/tf-cicd/tf-code/}"
        date = "\"2023-07-18 11:13:29\""
-       key = "'KEY'"
-       sh("aws s3 ls --recursive '#{s3_bucket_object_url}' | awk '$1 < #{date} {print $4}' | xargs -n1 -t -I '#{key}' aws s3 rm '#{s3_bucket_object_url}#{key}'")
+       sh("aws s3 ls --recursive '#{s3_bucket_object_url}' | awk '$1 < #{date} {print $4}' | xargs -n1 -t -I 'KEY' aws s3 rm '#{s3_bucket_object_url}''KEY'")
        puts "Running test lane"
     end
 
